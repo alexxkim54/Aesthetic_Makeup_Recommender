@@ -4,25 +4,29 @@ import sys
 import os
 import json
 import shutil
-import pandas as pd
 import warnings
 import pickle
 
 
+
+
 sys.path.insert(0, 'src')
+from data.etl import scrape_item_data
 
 
 def main(targets):
     '''
     Runs the main project pipeline logic, given the targets.
-    targets must contain: 'data', 'analysis', 'model'. 
+    targets must contain: 'data', 'features', 'model'. 
     
-    `main` runs the targets in order of data=>analysis=>model.
+    `main` runs the targets in order of data=>features=>model.
     '''
     
     
-    # with open('config/data-params.json') as fh:
-    #     data_cfg = json.load(fh)['outdir']
+    with open('config/data-params.json') as fh:
+        data_cfg = json.load(fh)
+        outdir = data_cfg['outputdir']
+        chrome_path = data_cfg['chromeexecdir']
         
     # run all targets    
     if 'all' in targets:
@@ -39,21 +43,25 @@ def main(targets):
     
     # Scrape data from Sephora.com. 
     if 'data' in targets:
+        scrape_item_data(outdir, chrome_path, "./data/cosmetic_url.csv")
         
         
 
    
         
     # create and save the features
-    # if 'features' in targets:            
+    if 'features' in targets:
+
+        pass            
         
     
     # load the model using the saved features.
-    # if 'model' in targets:
-
+    if 'model' in targets:
+        pass
     
     # Get accuracy of the model
-    # if 'accuracy' in targets:
+    if 'accuracy' in targets:
+        pass
         
         
     
