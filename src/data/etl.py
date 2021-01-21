@@ -64,11 +64,108 @@ def get_item_data(item_urls, driver):
 
         # counter += 1
 
+def get_review_data(item_urls, driver, reviews_df):
+    subset = item_urls
+    for i in range(0, len(subset)):
+        url = subset.URL[i]
+        print(url)
+        print(i)
+        driver.get(url)
+        productId = driver.find_element_by_class_name("css-1fuze8b.e65zztl0").text.split()[-1]
+    #     print(productId)
+    #     break
+        browser = scrollDown(driver, 2)
+        time.sleep(5)
+        browser = scrollDown(driver, 2)
+        time.sleep(5)
+        browser = scrollDown(driver, 2)
+        time.sleep(5)
+        browser = scrollDown(driver, 2)
+        time.sleep(5)
+        browser = scrollUp(driver, 4)
+        time.sleep(10)
+        
+        btn = driver.find_elements_by_id('review_filter_sort_trigger')
+        tries = 0
+        while ((len(btn) == 0) and (tries < 5)):
+            url = subset.URL[i]
+            driver.get(url)
+            productId = driver.find_element_by_class_name('css-1fuze8b.e65zztl0').text.split()[-1]
+            browser = scrollDown(driver, 2)
+            time.sleep(5)
+            browser = scrollDown(driver, 2)
+            time.sleep(5)
+            browser = scrollDown(driver, 2)
+            time.sleep(5)
+            browser = scrollDown(driver, 2)
+            time.sleep(5)
+            browser = scrollUp(driver, 4)
+            time.sleep(10)
+            btn = driver.find_elements_by_id('review_filter_sort_trigger')
+            tries += 1
+        if (tries == 5):
+            print('some issue occured: product was probably not found')
+            counter += 1
+            continue
+        btn = btn[0]
+        btn.click()
+        #sort by most helpful
+        #btn = driver.find_elements_by_xpath('/html/body/div[1]/div[2]/div/main/div/div[2]/div[1]/div/div[3]/div/div/div[1]/div[2]/div[4]/div/div/div/div/div[1]/span')[0]
+        btn = driver.find_elements_by_class_name('css-rfz1gg.eanm77i0')[0]
+        btn.click()
+        time.sleep(5)
+        browser = scrollDown(driver, 3)
+        time.sleep(5)
+        #load more reviews
+        try:
+            for _ in range(360//12):
+                btn = driver.find_elements_by_class_name('css-xswy5p.eanm77i0')
+                if (len(btn) >= 1):
+                    btn = btn[0]
+                    btn.click()
+                browser = scrollDown(driver, 4)
+                time.sleep(5)
+                btn = driver.find_elements_by_class_name('css-xswy5p.eanm77i0')
+                if (len(btn) >= 1):
+                    btn = btn[0]
+                    btn.click()
+        except NoSuchElementException:
+            print("No more reviews to load!")
+            
+        reviews = driver.find_elements_by_class_name('css-13o7eu2.eanm77i0')
+        for review in reviews:
+            try:
+                userId = review.find_elements_by_class_name('css-lmu1yj.eanm77i0')[0].text
+            except IndexError:
+                userId = ""
+            rating = review.find_elements_by_class_name('css-4qxrld')[0].get_attribute("aria-label").split()[0]
+                
+            info = review.find_elements_by_class_name('css-74woun.eanm77i0')
+            user_info = {'Skin Type': "", 'Skin Tone': ""}
+            for attr in info:
+                if 'Skin Type' in attr.text:
+                    user_info['Skin Type'] = attr.text[10:]
+                elif 'Skin Tone' in attr.text:
+                    user_info['Skin Tone'] = attr.text[10:]
+        
+        # transform into a data frame
+            dic = {'userID': userId, 'productID': productId, 'rating': rating, 'skin_tone': user_info['Skin Tone'], 'skin_type': user_info['Skin Type']}
+            reviews_df = reviews_df.append(pd.DataFrame(dic, index=[0]), ignore_index = True)
+    return reviews_df
 
-def scrape_item_data(data_cfg, chrome_path, item_url_csv):
+
+def scrape_item_data(outdir, chrome_path, item_url_csv):
     driver = webdriver.Chrome(executable_path = chrome_path)
     item_urls = pd.read_csv(item_url_csv)
     df2 = pd.DataFrame(columns=['productID', 'brand', 'name', 'price', 'description', 'ingredients', 'subCategory'])
     item_urls = pd.concat([item_urls, df2], axis = 1)
     get_item_data(item_urls, driver)
-    item_urls.to_csv(data_cfg + 'test_data.csv', encoding = 'utf-8-sig', index = False)
+    item_urls.to_csv(outdir + 'test_itemdata.csv', encoding = 'utf-8-sig', index = False)
+
+
+def scrape_review_data(outidr, chrome_path, item_url_csv):
+    driver = webdriver.Chrome(executable_path = chrome_path)
+    item_urls = pd.read_csv(item_url_csv)
+    reviews_df = pd.DataFrame(columns=['userID', 'productID', 'rating', 'skin_tone', 'skin_type'])
+    get_review_data(item_urls, driver, reviews_df)
+    reviews_df.to_csv(outdir + 'test_reviewdata.csv', encoding = 'utf-8-sig', index = False)

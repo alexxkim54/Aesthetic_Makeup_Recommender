@@ -11,7 +11,7 @@ import pickle
 
 
 sys.path.insert(0, 'src')
-from data.etl import scrape_item_data
+from data.etl import scrape_item_data, scrape_review_data
 
 
 def main(targets):
@@ -42,8 +42,11 @@ def main(targets):
     
     
     # Scrape data from Sephora.com. 
-    if 'data' in targets:
+    if 'item_data' in targets:
         scrape_item_data(outdir, chrome_path, "./data/cosmetic_url.csv")
+
+    if 'review_data' in targets:
+        scrape_review_data(outdir, chrome_path, "./data/cosmetic_url.csv")
         
         
 
