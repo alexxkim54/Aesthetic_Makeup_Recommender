@@ -1,5 +1,5 @@
 body{
-    background-color:lightblue;   
+    background-color:lightblue;
 }
 
 .user_survey{
@@ -7,7 +7,7 @@ body{
     border-style: solid;
     font-size: 30px;
     background-color:palevioletred;
-    text-align: center; 
+    text-align: center;
     height:1150px;
     width: 70vw;
     margin: auto;
@@ -33,7 +33,7 @@ body{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 50px;
-    text-align: center;  
+    text-align: center;
     margin: auto;
     height:10vh;
     width:70vw;
@@ -43,7 +43,7 @@ body{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 50px;
-    text-align: center;  
+    text-align: center;
     margin: auto;
     height:20vh;
     width:90vw;
@@ -89,8 +89,8 @@ body{
     font-size: 16px;
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: white; 
-    color: black; 
+    background-color: white;
+    color: black;
     border: 2px solid #008CBA;
 }
 
