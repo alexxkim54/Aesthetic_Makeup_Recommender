@@ -30,6 +30,8 @@ This base command can be modified with various different flags:
 
 **Check-in**: https://docs.google.com/document/d/18rve8FbhRN8VXoO99ixB6nh96uWYtR-DNQMrjIwCr8Y/edit
 
+**Report Checkpoint**: https://docs.google.com/document/d/1Xh3Ddskyy4niA7ZbzBUc9hoaR0bsrLKWgni9YzXTtZY/edit#
+
 **Final Report**: 
 
 
@@ -47,13 +49,20 @@ https://github.com/jjone36/Cosmetic
 * Scraped eye products and reviews
 * Designed website
 * Cleaned dataset
+* Encode ingredient data
+* Write rough draft of report (Abstract, Description of Data, Method, Metrics, Results)
+* Deploy Website on Heroku
 
 **Justin Lee**:
 * Fixed script to scrape data from Sephora
 * Scraped lip products and reviews
 * Coded data ingestion pipeline
+* Incorporate run.py
+* Code collaborative filtering model
 
 **Shayal Singh**:
 * Fixed script to scrape data from Sephora
 * Scraped face and cheek products and reviews
 * Coded website layout
+* Top popular baseline
+* Write rough draft of report (Website, Conclusion)
