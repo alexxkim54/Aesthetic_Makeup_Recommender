@@ -16,7 +16,8 @@ To run the project, each command must start from the root directory of the proje
 This base command can be modified with various different flags:
 | Flag                | Type | Default Value             | Description                                                       |
 |---------------------|------|---------------------------|-------------------------------------------------------------------|
-| --data              |      |                           | Scrape dataset from www.sephora.com.                              |
+| --item_data              |      |                      | Scrape item dataset from www.sephora.com.                              |
+| --review_data              |      |                      | Scrape review dataset from www.sephora.com.                              |
 | --features          |      |                           | Clean dataset and create features.                                |
 | --model             |      |                           | Run model to create recommendations.                              |
 | --accuracy          |      |                           | Evaluate accuracy of model.                                       |
@@ -59,6 +60,7 @@ https://github.com/jjone36/Cosmetic
 * Coded data ingestion pipeline
 * Incorporate run.py
 * Code collaborative filtering model
+* Create docker container
 
 **Shayal Singh**:
 * Fixed script to scrape data from Sephora
