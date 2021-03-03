@@ -40,6 +40,8 @@ To visit the webpage copy and paste this URL into your browser: https://makeup-r
 
 **Final Report**: https://docs.google.com/document/d/1WRj9ukUa-ozK3xtao-khCdradUQsR1k23tn4ELvQE3U/edit#
 
+**Presentation Slides**: https://docs.google.com/presentation/d/1WYmy2IKTuVGE193Pq5t9v2BRTVCKxFHXy5zfLZN1K_I/edit?usp=sharing
+
 
 ## Credits
 
