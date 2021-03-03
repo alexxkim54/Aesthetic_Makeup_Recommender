@@ -1,4 +1,4 @@
-# Aesthetic Makeup Recommender
+# Makeup Recommender
 
 This project is a recommender that will provide a one-stop shop experience where a user will get recommended an array of products to create an entire makeup look based on similar products that the user enjoys, products that similar users have purchased, as well as products that are personalized to the user including skin type, skin tone, allergies, and budget. Our project aims to utilize collaborative filtering recommendations along with content-based filtering to ensure user satisfaction and success when creating their desired look.
 
@@ -25,6 +25,11 @@ This base command can be modified with various different flags:
 | --all               |      |                           | Train and evaluate accuracy of baseline model and our recommender model.      |
 
 
+## Website
+
+To visit the webpage copy and paste this URL into your browser: https://makeup-recommender.herokuapp.com/
+
+
 ## Document History
 
 **Project Proposal**: https://docs.google.com/document/d/1bAXSUrQHcss8uU_eeqIJ4ewX3N-I8RLAjGJi77Zqw6c/edit
@@ -33,7 +38,7 @@ This base command can be modified with various different flags:
 
 **Report Checkpoint**: https://docs.google.com/document/d/1Xh3Ddskyy4niA7ZbzBUc9hoaR0bsrLKWgni9YzXTtZY/edit#
 
-**Final Report**: 
+**Final Report**: https://docs.google.com/document/d/1WRj9ukUa-ozK3xtao-khCdradUQsR1k23tn4ELvQE3U/edit#
 
 
 ## Credits
@@ -52,7 +57,11 @@ https://github.com/jjone36/Cosmetic
 * Cleaned dataset
 * Encode ingredient data
 * Write rough draft of report (Abstract, Description of Data, Method, Metrics, Results)
-* Deploy Website on Heroku
+* Deploy website on Heroku
+* Use Flask to connect model to website (not implemented in final product)
+* Fix UI with Streamlit
+* Filter recommendations
+* Edit report
 
 **Justin Lee**:
 * Fixed script to scrape data from Sephora
@@ -61,6 +70,9 @@ https://github.com/jjone36/Cosmetic
 * Incorporate run.py
 * Code collaborative filtering model
 * Create docker container
+* Deploy website on Heroku
+* Use Flask to connect model to website (not implemented in final product)
+* Organize code and documentation
 
 **Shayal Singh**:
 * Fixed script to scrape data from Sephora
@@ -68,3 +80,10 @@ https://github.com/jjone36/Cosmetic
 * Coded website layout
 * Top popular baseline
 * Write rough draft of report (Website, Conclusion)
+* Deploy website on Heroku
+* Use Flask to connect model to website (not implemented in final product)
+* Display recommendations
+* Visual presentation slides
+* Fix UI with Streamlit
+* Filter recommendations
+* Finalize website
